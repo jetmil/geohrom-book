@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /
+
+# ГЕОХРОМ: ТЕРРАЭНЕРГЕТИКА
+# Private book - not for indexing
