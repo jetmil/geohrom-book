@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>12 Камней — 12 Опор для жизни</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+    --warm-white: #F0EBE3;
+    --gold: #C5A55A;
+    --gold-dim: rgba(197,165,90,0.35);
+    --serif: 'Cormorant Garamond', 'Georgia', serif;
+    --sans: 'Raleway', 'Segoe UI', sans-serif;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+    background: #0a0706;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    min-height: 100vh;
+    font-family: var(--sans);
+}
+
+/* ======================================
+   BANNER 1000×1500
+   ====================================== */
+.banner {
+    width: 1000px;
+    height: 1500px;
+    position: relative;
+    overflow: hidden;
+    /* Atmospheric cathedral background (replace with actual photo) */
+    background:
+        /* Dome glow */
+        radial-gradient(ellipse 500px 320px at 50% 6%, rgba(140,100,50,0.10) 0%, transparent 100%),
+        /* Warm upper zone */
+        radial-gradient(ellipse 700px 500px at 50% 0%, rgba(50,30,15,0.5) 0%, transparent 100%),
+        /* Subtle side columns */
+        linear-gradient(90deg, rgba(0,0,0,0.2) 0%, transparent 8%, transparent 92%, rgba(0,0,0,0.2) 100%),
+        /* Vignette */
+        radial-gradient(ellipse at 50% 50%, transparent 40%, rgba(0,0,0,0.35) 100%),
+        /* Base: dark warm cathedral tones */
+        linear-gradient(to bottom,
+            #1e140e 0%,
+            #1a110b 15%,
+            #15100b 40%,
+            #120d09 65%,
+            #0e0906 100%);
+    color: var(--warm-white);
+}
+
+/* Subtle cross at very top */
+.banner::before {
+    content: '·  ✝  ·';
+    position: absolute;
+    top: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--gold-dim);
+}
+
+/* Subtle noise grain overlay */
+.banner::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 256px;
+    pointer-events: none;
+}
+
+.banner-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 48px 70px 36px;
+}
+
+/* Location line */
+.location {
+    font-family: var(--sans);
+    font-size: 12.5px;
+    font-weight: 400;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(240,235,227,0.7);
+    text-align: center;
+    margin-top: 16px;
+}
+
+/* Main title */
+.title-block {
+    text-align: center;
+    margin-top: 42px;
+}
+.title-main {
+    font-family: var(--serif);
+    font-size: 76px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    line-height: 1.0;
+    color: var(--warm-white);
+}
+.title-sub {
+    font-family: var(--serif);
+    font-size: 38px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+    color: rgba(240,235,227,0.88);
+    margin-top: 6px;
+}
+
+/* Italic subtitle */
+.subtitle-line {
+    font-family: var(--serif);
+    font-size: 17px;
+    font-weight: 400;
+    font-style: italic;
+    color: rgba(240,235,227,0.6);
+    text-align: center;
+    margin-top: 24px;
+    line-height: 1.5;
+    max-width: 560px;
+}
+
+/* ---- 12 STONES ---- */
+.stones-section {
+    margin-top: 46px;
+    width: 100%;
+    display: flex;
+    gap: 36px;
+    justify-content: center;
+}
+.stones-col {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    width: 400px;
+}
+.stone-row {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    line-height: 1.45;
+}
+.dot {
+    width: 11px;
+    height: 11px;
+    min-width: 11px;
+    border-radius: 50%;
+    position: relative;
+    top: 1px;
+    box-shadow: 0 0 6px rgba(255,255,255,0.08);
+}
+/* Gemstone glossy highlight */
+.dot::after {
+    content: '';
+    position: absolute;
+    top: 1.5px;
+    left: 2.5px;
+    width: 4px;
+    height: 3px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.35);
+}
+.stone-name {
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--warm-white);
+    white-space: nowrap;
+}
+.stone-quality {
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 300;
+    color: rgba(240,235,227,0.75);
+}
+.stone-phrase {
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(240,235,227,0.55);
+}
+
+/* ---- DIVIDER ---- */
+.gold-divider {
+    width: 480px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-dim), var(--gold), var(--gold-dim), transparent);
+    margin-top: 46px;
+}
+
+/* ---- WHAT WE DO ---- */
+.what-section {
+    margin-top: 34px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+}
+.what-item {
+    font-family: var(--sans);
+    font-size: 14.5px;
+    font-weight: 300;
+    color: rgba(240,235,227,0.72);
+    text-align: center;
+    line-height: 1.4;
+}
+.what-item::before {
+    content: '·';
+    margin-right: 10px;
+    color: var(--gold-dim);
+    font-weight: 600;
+}
+
+/* ---- WHY SECTION ---- */
+.why-section {
+    margin-top: 42px;
+    text-align: center;
+    max-width: 520px;
+}
+.why-line {
+    font-family: var(--serif);
+    font-size: 21px;
+    font-weight: 400;
+    font-style: italic;
+    color: rgba(240,235,227,0.82);
+    line-height: 1.55;
+}
+
+/* ---- BOTTOM ---- */
+.bottom-info {
+    margin-top: auto;
+    text-align: center;
+    padding-top: 30px;
+}
+.bottom-date {
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    color: rgba(240,235,227,0.75);
+    line-height: 1.6;
+}
+.bottom-address {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0.06em;
+    color: rgba(240,235,227,0.5);
+    margin-top: 4px;
+}
+.bottom-note {
+    margin-top: 18px;
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 300;
+    color: rgba(240,235,227,0.4);
+    letter-spacing: 0.04em;
+    line-height: 1.7;
+}
+.bottom-note em {
+    color: rgba(197,165,90,0.55);
+    font-style: normal;
+}
+
+/* ======================================
+   POST TEXT SECTION
+   ====================================== */
+.post-section {
+    max-width: 700px;
+    margin-top: 80px;
+    padding: 50px 40px;
+    background: #141210;
+    border: 1px solid rgba(197,165,90,0.12);
+    border-radius: 4px;
+    color: var(--warm-white);
+}
+.post-section h2 {
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 30px;
+    text-align: center;
+}
+.post-text {
+    font-family: var(--serif);
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 1.75;
+    color: rgba(240,235,227,0.85);
+}
+.post-text .post-title {
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+}
+.post-text p {
+    margin-bottom: 18px;
+}
+.post-text .qualities-list {
+    margin: 20px 0 20px 20px;
+    line-height: 1.85;
+    color: rgba(240,235,227,0.7);
+    font-style: italic;
+}
+.post-text .cta {
+    margin-top: 28px;
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.9;
+    color: rgba(240,235,227,0.55);
+}
+.post-text .cta strong {
+    color: rgba(240,235,227,0.7);
+    font-weight: 400;
+}
+
+/* Print hint */
+.print-hint {
+    margin-top: 40px;
+    text-align: center;
+    font-family: var(--sans);
+    font-size: 11px;
+    color: rgba(240,235,227,0.25);
+    letter-spacing: 0.05em;
+}
+</style>
+</head>
+<body>
+
+<!-- ==================================
+     БАННЕР 1000×1500
+     Для скриншота / экспорта
+     Фон: заменить на фото Красного собора
+     ================================== -->
+<div class="banner">
+<div class="banner-content">
+
+    <!-- Локация -->
+    <div class="location">Свято-Екатерининский кафедральный собор &nbsp;·&nbsp; Краснодар</div>
+
+    <!-- Заголовок -->
+    <div class="title-block">
+        <div class="title-main">12 КАМНЕЙ</div>
+        <div class="title-sub">12 ОПОР ДЛЯ ЖИЗНИ</div>
+    </div>
+
+    <!-- Подзаголовок курсив -->
+    <div class="subtitle-line">
+        Совместная молитва и&nbsp;созерцание<br>у&nbsp;12&nbsp;камней Небесного Иерусалима
+    </div>
+
+    <!-- 12 камней, 2 столбца -->
+    <div class="stones-section">
+        <!-- Левый столбец -->
+        <div class="stones-col">
+            <div class="stone-row">
+                <div class="dot" style="background:#5C8A4D;"></div>
+                <div><span class="stone-name">Яспис</span> <span class="stone-quality">— ясность.</span> <span class="stone-phrase">Вижу, куда иду.</span></div>
+            </div>
+            <div class="stone-row">
+                <div class="dot" style="background:#1E5AAF;"></div>
+                <div><span class="stone-name">Сапфир</span> <span class="stone-quality">— глубина.</span> <span class="stone-phrase">Слышу, что важно.</span></div>
+            </div>
+            <div class="stone-row">
+                <div class="dot" style="background:#D4CFC5; box-shadow:0 0 6px rgba(255,255,255,0.15);"></div>
+                <div><span class="stone-name">Халкидон</span> <span class="stone-quality">— покой.</span> <span class="stone-phrase">Принимаю мир в&nbsp;душе.</span></div>
+            </div>
+            <div class="stone-row">
+                <div class="dot" style="background:#2E8B57;"></div>
+                <div><span class="stone-name">Смарагд</span> <span class="stone-quality">— жизнь.</span> <span class="stone-phrase">Расту и&nbsp;даю расти другим.</span></div>
+            </div>
+            <div class="stone-row">
+                <div class="dot" style="background:#9E7B6B;"></div>
+                <div><span class="stone-name">Сардоникс</span> <span class="stone-quality">— связь.</span> <span class="stone-phrase">Соединяю, что разделено.</span></div>
+            </div>
+            <div class="stone-row">
+                <div class="dot" style="background:#C14430;"></div>
+                <div><span class="stone-name">Сердолик</span> <span class="stone-quality">— сила.</span> <span class="stone-phrase">Иду до&nbsp;конца.</span></div>
+            </div>
+        </div>
+        <!-- Правый столбец -->
+        <div class="stones-col">
+            <div class="stone-row">
+                <div class="dot" style="background:#B8B539;"></div>
+                <div><span class="stone-name">Хризолит</span> <span class="stone-quality">— щедрость.</span> <span class="stone-phrase">Отдаю и&nbsp;получаю.</span></div>
+            </div>
+            <div class="stone-row">
+                <div class="dot" style="background:#71C5CF;"></div>
+                <div><span class="stone-name">Вирилл</span> <span class="stone-quality">— чистота.</span> <span class="stone-phrase">Ищу настоящее.</span></div>
+            </div>
+            <div class="stone-row">
+                <div class="dot" style="background:#D4A54A;"></div>
+                <div><span class="stone-name">Топаз</span> <span class="stone-quality">— радость.</span> <span class="stone-phrase">Свечу, не&nbsp;выгорая.</span></div>
+            </div>
+            <div class="stone-row">
+                <div class="dot" style="background:#7BC67B;"></div>
+                <div><span class="stone-name">Хризопраз</span> <span class="stone-quality">— надежда.</span> <span class="stone-phrase">Верю и&nbsp;делаю.</span></div>
+            </div>
+            <div class="stone-row">
+                <div class="dot" style="background:#CF5C36;"></div>
+                <div><span class="stone-name">Гиацинт</span> <span class="stone-quality">— память.</span> <span class="stone-phrase">Несу свет тех, кто&nbsp;был до&nbsp;меня.</span></div>
+            </div>
+            <div class="stone-row">
+                <div class="dot" style="background:#8E4AAD;"></div>
+                <div><span class="stone-name">Аметист</span> <span class="stone-quality">— полнота.</span> <span class="stone-phrase">Круг замкнут, основание готово.</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Золотой разделитель -->
+    <div class="gold-divider"></div>
+
+    <!-- Что будем делать -->
+    <div class="what-section">
+        <div class="what-item">Помолимся вместе под куполом собора</div>
+        <div class="what-item">Зажжём свечи за себя и&nbsp;близких</div>
+        <div class="what-item">Пройдём все 12&nbsp;камней — тихо, сосредоточенно</div>
+        <div class="what-item">Постоим в&nbsp;тишине и&nbsp;послушаем себя</div>
+    </div>
+
+    <!-- Зачем -->
+    <div class="why-section">
+        <div class="why-line">
+            Каждый камень — молитва о&nbsp;конкретном.<br>
+            Ясность, сила, покой, надежда —<br>
+            то, что нужно каждый день.
+        </div>
+    </div>
+
+    <!-- Низ -->
+    <div class="bottom-info">
+        <div class="bottom-date">[дата] &nbsp;·&nbsp; [время]</div>
+        <div class="bottom-date" style="margin-top:2px;">Свято-Екатерининский собор</div>
+        <div class="bottom-address">ул. Коммунаров, 52, Краснодар</div>
+        <div class="bottom-note">
+            <em>Возьмите с&nbsp;собой 40&nbsp;свечей</em><br>
+            Запись: [контакт / ссылка / QR]
+        </div>
+    </div>
+
+</div>
+</div>
+
+
+<!-- ==================================
+     ТЕКСТ ДЛЯ ПОСТА
+     (скопировать и вставить в соцсети)
+     ================================== -->
+<div class="post-section">
+    <h2>Текст для поста · Каменная молитва</h2>
+    <div class="post-text">
+        <div class="post-title">КАМЕННАЯ МОЛИТВА</div>
+
+        <p>12 камней. 12 конкретных просьб.</p>
+
+        <p>В Откровении написано: стены Небесного Иерусалима стоят на двенадцати камнях. Яспис, сапфир, изумруд, аметист... Не украшение — основание. То, на чём держится всё.</p>
+
+        <p>У каждого камня — своё качество. Своя грань жизни. Не абстрактная «духовность», а конкретное слово:</p>
+
+        <div class="qualities-list">
+            Ясность — чтобы видеть, куда идёшь.<br>
+            Глубина — чтобы слышать, что важно.<br>
+            Покой — чтобы не рвать себя на части.<br>
+            Сила — чтобы дойти до конца.<br>
+            Щедрость — чтобы отдавать и получать.<br>
+            Надежда — чтобы верить и делать.<br>
+            Память — чтобы нести свет тех, кто был до нас.
+        </div>
+
+        <p>Мы берём камни. Идём в собор. Встаём под куполом. И молимся — тихо, камень за камнем.</p>
+
+        <p>У камня ясности — просим ясности. У камня силы — просим силы. Двенадцать камней — двенадцать молитв о том, что реально нужно каждый день.</p>
+
+        <p>Зажигаем 40 свечей — за себя и за близких. Проходим все камни. Стоим в тишине. Слушаем.</p>
+
+        <p>Это простая вещь. Зашёл, помолился, постоял, ушёл другим.</p>
+
+        <p>Приходите.</p>
+
+        <div class="cta">
+            <strong>Свято-Екатерининский кафедральный собор</strong><br>
+            ул. Коммунаров, 52, Краснодар<br>
+            [дата] · [время]<br><br>
+            <strong>Возьмите с собой 40 свечей.</strong><br>
+            Запись: [контакт]
+        </div>
+    </div>
+</div>
+
+<div class="print-hint">
+    Баннер 1000×1500 px · для печати 60×90 см — заменить фон на&nbsp;фото Красного собора
+</div>
+
+</body>
+</html>
